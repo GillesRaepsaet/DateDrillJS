@@ -1,21 +1,23 @@
-setInterval(setClock, 1000);
-const hours = document.querySelector('[Date-hours]')
-const minutes = document.querySelector('[Date-minutes]')
-const seconds = document.querySelector('[Date-seconds]')
+const interval = setInterval(myClock, 1000)
+const hoursHand = document.querySelector('[Hand-Date-hours]')
+const minutesHand = document.querySelector('[Hand-Date-minutes]')
+const secondsHand = document.querySelector('[Hand-Date-seconds]')
 
 
-const setClock =  () => {
+const myClock =  () => {
     const currentDateRotation = new Date()
-    const currentSeconds = currentDateRotation.getSeconds()/60
-    const currentMinutes =(currentMinutes + currentDateRotation.getMinutes()/60)
-    const currentHours = (currentHours + currentDateRotation.getHours()/60)
-    setRotationClock(hours, currentHours)
-    setRotationClock(minutes, currentMinutes)
-    setRotationClock(seconds, currentSeconds)
+    const currentSeconds = currentDateRotation.getSeconds() /60
+    const currentMinutes =(currentMinutes + currentDateRotation.getMinutes() /60)
+    const currentHours = (currentHours + currentDateRotation.getHours() /60)
+    setRotationClock(hoursHand, currentHours)
+    setRotationClock(minutesHand, currentMinutes)
+    setRotationClock(secondsHand, currentSeconds)
 }
 
 const setRotationClock = (elm, rotationRatioDate) => {
-    elm.style.setProperty('--rotation', rotationRatioDate*360)
+    elm.style.setProperty('--rotation', rotationRatioDate *365)
 }
 
-setClock()
+myClock = () => {
+    clearInterval(interval)
+}
